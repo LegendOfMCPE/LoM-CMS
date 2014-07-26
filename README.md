@@ -7,9 +7,13 @@ Simple Website CMS to connect your Server to your Website.
 
 Dependency:
 ===========
-•Web Server e.g apache2/nginx/tomcat ..
+• Web Server (e.g. apache2/nginx/tomcat ..)
 
-•PHP5
+• PHP5
+
+• MySQL
+
+• Database Manager (e.g. PhpMyAdmin)
 
 •SimpleAuth (Plugin NEW API)
 
