@@ -1,4 +1,4 @@
-Cobtributing Guidelines and Agreement
+Contributing Guidelines and Agreement
 ===
 Before creating an issue, a pull request or pushing a commit directly with owner/collaborator of the repository, please read the following first.
 
