@@ -8,13 +8,14 @@
 * | |    / _ \| |\/| |______| |    | |\/| |\___ \  *
 * | |___| (_) | |  | |      | |____| |  | |____) | *
 * |______\___/|_|  |_|       \_____|_|  |_|_____/  *
-*												   *
-*                -=[VERSION 0.0.1]=-			   *
-*		   BY: LEGEND OF MCPE ORGANIZATION		   *
-*	   GITHUB: HTTP://GITHUB.COM/LEGENDOFMCPE	   *
-*												   *
+*                                                  *
+*                -=[VERSION 0.0.1]=-               *
+*          BY: LEGEND OF MCPE ORGANIZATION         *
+*       GITHUB: HTTP://GITHUB.COM/LEGENDOFMCPE     *
+*                                                  *
 ****************************************************
 */
+
 session_start();
 session_destroy();
 header("location: login.php");
