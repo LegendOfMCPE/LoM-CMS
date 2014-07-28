@@ -33,8 +33,16 @@ $mysql_password = "";
 /* Database Name */
 $mysql_database = "";
 
-$bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Could not connect database");
-mysql_select_db($mysql_database, $bd) or die("Could not select database");
+$bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("
+==========================<br />
+% <font color='red'>Couldn't connect to the database</font> % <br />
+==========================
+");
+mysql_select_db($mysql_database, $bd) or die("
+===========================<br />
+% <font color='red'>Couldn't find SimpleAuth Database</font> % <br />
+===========================
+");
 
 //================================================
 
