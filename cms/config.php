@@ -16,10 +16,10 @@
 ****************************************************
 */
 
-====================================================
+//=================================================
 /* NOTE: THE DATABASE DETAILS MUST BE EXACTLY THE
    SAME AS IN YOUR SIMPLEAUTH CONFIG MYSQL DATA! */
-====================================================
+//=================================================
 
 /* Hostname : Default is localhost */
 $mysql_hostname = "localhost";
@@ -36,6 +36,6 @@ $mysql_database = "";
 $bd = mysql_connect($mysql_hostname, $mysql_user, $mysql_password) or die("Could not connect database");
 mysql_select_db($mysql_database, $bd) or die("Could not select database");
 
-====================================================
+//================================================
 
 ?>
