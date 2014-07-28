@@ -17,7 +17,6 @@
 */
 
 require 'include.php';
-require 'config.php';
 
 $query= mysql_query("SELECT * FROM simpleauth_players WHERE name='$usr'")or die(mysql_error());
 $get = mysql_fetch_array($query);
@@ -29,7 +28,8 @@ require 'header.php';
 </head>
 
 <body>
-Welcome, <?php echo "$usr" ?>. It seems their is nothing to see in here at the moment. <a href="logout.php">Logout?</a>
+Welcome, <?php echo $usr; ?>. It seems their is nothing to see in here at the moment. <a href="logout.php">Logout?</a><br />
+IP address that last connected in your account was <?php echo $ip; ?>.
 </body>
 
 <?php

@@ -28,6 +28,8 @@
 		header("location: login.php");
 		exit();
 	}
+// Connection
+require 'config.php';
 
 // Replace current session ID with a new one
 session_regenerate_id(true);
@@ -56,8 +58,16 @@ set_time_limit(10);
 	{
 		$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 	}
-	
-// Session Name	
+
+/*****************************/
+/*-----Shortcuts Lists-------*/
+/*****************************/
+
+// Session Name
 $usr = $_SESSION['SESS_NAME'];
 
+// Session IP
+$ip = $_SESSION['SESS_IP'];
+
+/*****************************/
 ?>

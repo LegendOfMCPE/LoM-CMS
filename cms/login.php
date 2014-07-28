@@ -39,7 +39,7 @@ require 'header.php';
 			unset($_SESSION['ERRMSG_ARR']);
 			}
 		?></label>
-        <input type="text" name="username" placeholder="iMCPE Username" required autofocus>
+        <input type="text" name="username" placeholder="Server Username" required autofocus>
         <input type="password" name="password" placeholder="Password" required>
         <button type="submit">Sign in</button>
       </form>
