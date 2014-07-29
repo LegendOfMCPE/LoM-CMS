@@ -16,6 +16,11 @@
 ****************************************************
 */
 
+/**************************************************/
+/** DO NOT TOUCH THIS FILE IF YOU DONT KNOW WHAT **/
+/** WHAT YOU ARE DOING! IT MAY CAUSE TROUBLE!!   **/
+/**************************************************/
+
 /***************************************************
 **READ ME. THIS FILE MUST BE INCLUDED TO ALL PAGES**
 **EXCEPT THE LOGIN PAGE.****************************
@@ -28,7 +33,7 @@
 		header("location: login.php");
 		exit();
 	}
-// Connection
+// Connection STUFF
 require 'config.php';
 
 // Replace current session ID with a new one
@@ -70,4 +75,33 @@ $usr = $_SESSION['SESS_NAME'];
 $ip = $_SESSION['SESS_IP'];
 
 /*****************************/
+
+/******[ Directory Checks ]********/
+$dirfag = $px."-".$sdir;
+$dirfuck = $px."-".$sdir."/".$sdir_key;
+
+	if($sdir !== "" and $sdir_key !== ""){
+		if(!file_exists($dirfag)) {
+		mkdir($dirfag);
+		}
+		if(!file_exists($dirfuck)) {
+		mkdir($dirfuck);
+		}
+	}
+	
+	if($pdir !== ""){
+		if(!file_exists($pdir)) {
+			echo "PocketMine Directory '<i>$pdir</i>' doesnt exist! Please state the correct directory address at config.php<br /><br />";
+		}
+		else{
+		}
+	}
+	
+	if($dir_path !== ""){
+		if(!file_exists($dir_path)){
+			echo "Website Directory $dir_path doesnt exist! Please state the correct directory address at config.php<br /><br />";
+		}
+	}
+	echo "copy ". $pdir . " " . $dir_path . $dir_folder . $dirfuck ."<br />";
+/***********************************/
 ?>

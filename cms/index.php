@@ -24,6 +24,7 @@ $num = mysql_numrows($query);
 
 require 'header.php';
 ?>
+
 <title>LoM-CMS v0.0.1 - Home</title>
 </head>
 
