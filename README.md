@@ -47,3 +47,47 @@ Restart Apache2
 ```bash
 sudo service apache2 restart
 ```
+
+## For Windows
+
+Download this Pre-Compiled libYAML file.
+```bash
+http://search.4shared.com/postDownload/ComqwjFvce/php_yaml-102-dev-54-vc9-x86.html
+```
+and extract it in its respective places:
+### For XAMPP Users
+Place this file:
+```bash
+yaml.dll
+```
+alone at the XAMPP Directory
+examle Directory:
+```bash
+C:\xampp\
+```
+and then, place this file:
+```bash
+php_yaml.dll
+```
+at XAMPP PHP Extention Directory.
+
+Default Directory:
+```bash
+C:\xampp\php\ext
+```
+Now edit your php.ini file located at:
+```php
+C:\xampp\php\php.ini
+```
+and add
+```bash
+extension=php_yaml.dll
+```
+Restart Apache via XAMPP Control Panel
+
+### For NON-XAMPP Users
+
+- Copy yaml.dll to PHP root directory
+- Copy php_yaml.dll to PHP/ext directory
+- Add extension=php_yaml.dll to php.ini
+- Restart Apache
