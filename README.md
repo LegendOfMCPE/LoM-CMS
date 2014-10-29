@@ -19,7 +19,7 @@ Anyways, this CMS is to help Server Owners who are planning to use Player data m
 - MySQL
 - SimpleAuth (NEW API)
 - LibYAML (reading yaml files)
-  - If you are hosted in your own box, just install this by following the tutorial how
+  - If you are hosted in your own box, just install this by following [this tutorial](https://github.com/LegendOfMCPE/LoM-CMS#how-to-install-libyaml)
   - This is not needed if you're going to use LoM-CMS Plugin Connector which isnt available right now
 - PocketMine Directory (For Administrating your Server with GUI)
 - LoM-CMS Plugin Connector (If PocketMine Directory is remote) [Not made yet]
