@@ -1,4 +1,4 @@
-### THIS DOESNT SUPPORT SHARED WEBHOSTING AT THE MOMENT!
+### LoM-CMS will have its core rewrite
 
 LoM-CMS
 =========
@@ -17,9 +17,4 @@ Anyways, this CMS is to help Server Owners who are planning to use Player data m
 - Web Server (e.g. apache2/nginx/tomcat ..)
 - PHP5
 - MySQL
-- SimpleAuth (NEW API)
-- LibYAML (reading yaml files)
-  - If you are hosted in your own box, just install this by following [this tutorial](https://github.com/LegendOfMCPE/LoM-CMS/wiki/How-to-Install-LibYAML)
-  - This is not needed if you're going to use LoM-CMS Plugin Connector which isnt available right now
-- PocketMine Directory (For Administrating your Server with GUI)
 - LoM-CMS Plugin Connector (If PocketMine Directory is remote) [Not made yet]
