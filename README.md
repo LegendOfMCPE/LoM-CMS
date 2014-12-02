@@ -17,4 +17,5 @@ Anyways, this CMS is to help Server Owners who are planning to use Player data m
 - Web Server (e.g. apache2/nginx/tomcat ..)
 - PHP5
 - MySQL
-- LoM-CMS Plugin Connector (If PocketMine Directory is remote) [Not made yet]
+- SimpleAuth
+- LoM-CMS Plugin Connector
