@@ -16,9 +16,18 @@
 ****************************************************
 */
 
-require_once("/src/lomcms.php");
-require_once("/src/api.php");
-
-include "/src/pages/dashboard.php";
-
+class SQLGuard{
+	public static function checkNumber($stringToCheck){
+		if(!(is_numeric($stringToCheck))){
+			exit(0);
+		}
+	}
+	public static function filtString($stringInput){
+		$buf = str_replace("'", "'", $stringInput);
+		$buf = str_replace('"', "\"", $stringInput);
+		$buf = str_replace("<", "&lt;", $buf);
+		$buf = str_replace(">", "&gt;", $buf);
+		return($buf);
+	}
+}
 ?>

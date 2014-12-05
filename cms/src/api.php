@@ -16,9 +16,10 @@
 ****************************************************
 */
 
-require_once("/src/lomcms.php");
-require_once("/src/api.php");
+require_once(dirname(__FILE__) . "/src/lomcms.php");
 
-include "/src/pages/dashboard.php";
+/*
+API FUNCTIONS SOON!
+*/
 
 ?>
