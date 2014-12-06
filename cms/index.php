@@ -19,6 +19,6 @@
 require_once("/src/lomcms.php");
 require_once("/src/api.php");
 
-include "/src/pages/dashboard.php";
+require "/src/pages/dashboard.php";
 
 ?>

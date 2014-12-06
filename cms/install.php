@@ -109,7 +109,7 @@ if($db_check){
 					id					INT(11) NOT NULL AUTO_INCREMENT,
 					topic				VARCHAR(16) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
-					discussion			VARCHAR(16) NOT NULL,
+					discussion			VARCHAR(10000) NOT NULL,
 					lastposted			INT(11) NOT NULL,
 					lastupdate			INT(11) NOT NULL,
 					PRIMARY KEY (id)
@@ -159,9 +159,9 @@ if($db_check){
 			$sql_generate_tickets_q = "CREATE TABLE IF NOT EXISTS lomcms_tickets_q(
 					id					INT(11) NOT NULL AUTO_INCREMENT,
 					cat_id				INT(8) NOT NULL,
-					topic				VARCHAR(16) NOT NULL,
+					topic				VARCHAR(80) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
-					discussion			VARCHAR(16) NOT NULL,
+					discussion			VARCHAR(5000) NOT NULL,
 					lastposted			INT(11) NOT NULL,
 					lastupdate			INT(11) NOT NULL,
 					status				INT(1) NOT NULL,
@@ -187,7 +187,7 @@ if($db_check){
 			$sql_generate_tickets_a = "CREATE TABLE IF NOT EXISTS lomcms_tickets_a(
 					id					INT(11) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
-					discussion			VARCHAR(16) NOT NULL,
+					discussion			VARCHAR(5000) NOT NULL,
 					lastposted			INT(11) NOT NULL,
 					lastupdate			INT(11) NOT NULL
 					)ENGINE=INNODB;";
