@@ -67,15 +67,51 @@ if($db_check){
 	
 	/* No SimpleAuth Part */
 	
+		/* Adding LoM-CMS Features to SimpleAuth database */
+		
+		//Display Name//
+		$exist_display_name = $db->query("SHOW columns from simpleauth_players where field='displayname'")->num_rows;
+		if($exist_display_name == 0){
+			echo "&gt; [PENDING] 'displayname' column not found on simpleauth_players table.<br />";
+			echo "&gt; [PENDING] Generating column ...<br />";
+			$edn_result = $db->query("ALTER TABLE simpleauth_players ADD displayname VARCHAR(16)");
+			if(!$edn_result){
+				echo "&gt; [FAILED] Can't create column : \"displayname\" on simpleauth_players table!<br />";
+				echo "&gt; Aborting ...<br />";
+			}else{
+				echo "&gt; [SUCCESS] Successfully created \"<strong>displayname</strong>\" column on \"<strong>simpleauth_players</strong>\" table! <br />";
+			}
+		}
+		//Display Name//
+		
+		//Email//
+		$exist_email = $db->query("SHOW columns from simpleauth_players WHERE field='email'")->num_rows;
+		if($exist_email == 0){
+			echo "&gt; [PENDING] 'email' column not found on simpleauth_players table.<br />";
+			echo "&gt; [PENDING] Generating column ...<br />";
+			$ee_result = $db->query("ALTER TABLE simpleauth_players ADD email VARCHAR(50)");
+			if(!$ee_result){
+				echo "&gt; [FAILED] Can't create column : \"email\" on simpleauth_players table!<br />";
+				echo "&gt; Aborting ...<br />";
+			}else{
+				echo "&gt; [SUCCESS] Successfully created \"<strong>email</strong>\" column on \"<strong>simpleauth_players</strong>\" table! <br />";
+			}
+		}
+		//Email//
+		
+		
+		/* Adding LoM-CMS Features to SimpleAuth database */
+	
 		if(!$db->query("SELECT * FROM lomcms_blog LIMIT 0")){
 			
 			$sql_generate_lb = "CREATE TABLE IF NOT EXISTS lomcms_blog(
-					id					INT(11) NOT NULL,
+					id					INT(11) NOT NULL AUTO_INCREMENT,
 					topic				VARCHAR(16) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
 					discussion			VARCHAR(16) NOT NULL,
 					lastposted			INT(11) NOT NULL,
-					lastupdate			INT(11) NOT NULL
+					lastupdate			INT(11) NOT NULL,
+					PRIMARY KEY (id)
 					)ENGINE=INNODB;";
 					
 			$db->query($sql_generate_lb);
@@ -116,12 +152,14 @@ if($db_check){
 		if(!$db->query("SELECT * FROM lomcms_tickets_q LIMIT 0")){
 		
 			$sql_generate_tickets_q = "CREATE TABLE IF NOT EXISTS lomcms_tickets_q(
-					id					INT(11) NOT NULL,
+					id					INT(11) NOT NULL AUTO_INCREMENT,
 					topic				VARCHAR(16) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
 					discussion			VARCHAR(16) NOT NULL,
 					lastposted			INT(11) NOT NULL,
-					lastupdate			INT(11) NOT NULL
+					lastupdate			INT(11) NOT NULL,
+					status				INT(1) NOT NULL,
+					PRIMARY KEY (id)
 					)ENGINE=INNODB;";
 			
 			$db->query($sql_generate_tickets_q);
@@ -165,12 +203,14 @@ if($db_check){
 		if(!$db->query("SELECT * FROM lomcms_report LIMIT 0")){
 		
 			$sql_generate_report = "CREATE TABLE IF NOT EXISTS lomcms_report(
-					id					INT(11) NOT NULL,
+					id					INT(11) NOT NULL AUTO_INCREMENT,
 					author				VARCHAR(16) NOT NULL,
 					target				VARCHAR(16) NOT NULL,
-					discussion			VARCHAR(16) NOT NULL,
+					reason				VARCHAR(50) NOT NULL,
+					discussion			VARCHAR(1000) NOT NULL,
 					lastposted			INT(11) NOT NULL,
-					lastupdate			INT(11) NOT NULL
+					lastupdate			INT(11) NOT NULL,
+					PRIMARY KEY (id)
 					)ENGINE=INNODB;";
 			
 			$db->query($sql_generate_report);
@@ -186,16 +226,40 @@ if($db_check){
 			}
 			
 		}
+		
+		if(!$db->query("SELECT * FROM lomcms_user_status LIMIT 0")){
+		
+			$sql_generate_report = "CREATE TABLE IF NOT EXISTS lomcms_user_status(
+					name				VARCHAR(16) NOT NULL,
+					isbanned			INT(1) NOT NULL DEFAULT '0',
+					ip					INT(11) NOT NULL,
+					lastupdate			INT(11) NOT NULL
+					)ENGINE=INNODB;";
+			
+			$db->query($sql_generate_report);
+			
+			echo "&gt; [PENDING] lomcms_user_status database not found.<br />";
+			echo "&gt; [PENDING] Generating table ...<br />";
+			
+			if(!$db->query($sql_generate_report)){
+				echo "&gt; [FAILED] Can't create the table : \"lomcms_user_status\"!<br />";
+				echo "&gt; Aborting ...<br />";
+			}else{
+				echo "&gt; [SUCCESS] Successfully created \"<strong>lomcms_user_status</strong>\" table on \"<strong>" . SIMPLEAUTH_DB . "</strong>\" database! <br />";
+			}
+			
+		}
 			
 		if(!$db->query("SELECT * FROM lomcms_srv_mngr LIMIT 0")){
 		
 			$sql_generate_srv_mngr = "CREATE TABLE IF NOT EXISTS lomcms_srv_mngr(
-					id					INT(11) NOT NULL,
+					id					INT(11) NOT NULL AUTO_INCREMENT,
 					domain				VARCHAR(50) NOT NULL,
 					port				INT(11) NOT NULL,
 					rcon_pass			VARCHAR(150) NOT NULL,
 					lastposted			INT(11) NOT NULL,
-					lastupdate			INT(11) NOT NULL
+					lastupdate			INT(11) NOT NULL,
+					PRIMARY KEY (id)
 					)ENGINE=INNODB;";
 			
 			$db->query($sql_generate_srv_mngr);
@@ -210,7 +274,7 @@ if($db_check){
 				echo "&gt; [SUCCESS] Successfully created \"<strong>lomcms_srv_mngr</strong>\" table on \"<strong>" . SIMPLEAUTH_DB . "</strong>\" database! <br />";
 			}
 		
-			echo "&gt; LoM-CMS is now installed and connected to the database! Please delete the <strong>install.php</strong> afterwards.<br />";
+			//echo "&gt; LoM-CMS is now installed and connected to the database! Please delete the <strong>install.php</strong> afterwards.<br />";
 			
 		}else{
 			echo "&gt; LoM-CMS is already installed and connected to the database! Please delete the <strong>install.php</strong> afterwards.<br />";
