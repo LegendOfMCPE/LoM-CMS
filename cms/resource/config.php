@@ -25,6 +25,17 @@
 //<--- EDITABLE FIELDS --->//
 //===========================
 //----------------------------
+/* <--	Website Fields --> */
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+//Note: This is only temporary. You can apply these settings
+//		after you have installed this CMS in the Admin Panel.
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+define('TEMP_TITLE', 'LoM-CMS MCPE Website');
+define('TEMP_SLOGAN', 'A compact CMS suitable for MCPE servers.');
+/* <--	Website Fields --> */
+//----------------------------
+//===========================
+//----------------------------
 /* <--	MySQL Details --> */
 /*		HostName	*/
 define('MYSQL_HOST','localhost');
