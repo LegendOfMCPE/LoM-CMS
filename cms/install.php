@@ -132,8 +132,10 @@ if($db_check){
 		if(!$db->query("SELECT * FROM lomcms_settings LIMIT 0")){
 		
 			$sql_generate_settings = "CREATE TABLE IF NOT EXISTS lomcms_settings(
-					web_title				VARCHAR(16) NOT NULL,
-					web_slogan				VARCHAR(16) NOT NULL
+					id					INT(11) NOT NULL AUTO_INCREMENT,
+					web_title				VARCHAR(120) NOT NULL,
+					web_slogan				VARCHAR(120) NOT NULL,
+					PRIMARY KEY (id)
 					)ENGINE=INNODB;";
 					
 			$db->query($sql_generate_settings);
@@ -146,6 +148,8 @@ if($db_check){
 				echo "&gt; Aborting ...<br />";
 			}else{
 				echo "&gt; [SUCCESS] Successfully created \"<strong>lomcms_settings</strong>\" table on \"<strong>" . SIMPLEAUTH_DB . "</strong>\" database! <br />";
+				$submit_temp = "INSERT INTO `lomcms_settings` (`web_title`, `web_slogan`) VALUES ('" . TEMP_TITLE . "', '" . TEMP_SLOGAN . "');";
+				$db->query($submit_temp);
 			}
 			
 		}
