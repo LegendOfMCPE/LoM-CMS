@@ -22,7 +22,8 @@ require_once(dirname(__FILE__) . "/src/lomcms.php");
 echo "<title>LoM-CMS Installation</title>";
 
 echo "==========================<br />";
-echo "Welcome to LoM-CMS Installation.<br />";
+echo " ----- LoM-CMS Installer v1.0.0 -----<br />";
+echo "Brought to you by LegendOfMCPE.<br />";
 echo "==========================<br /><br />";
 
 echo "Note:<br />";
@@ -65,8 +66,6 @@ if($db_check){
 		}
 	}else{
 	
-	/* No SimpleAuth Part */
-	
 		/* Adding LoM-CMS Features to SimpleAuth database */
 		
 		//Display Name//
@@ -101,6 +100,8 @@ if($db_check){
 		
 		
 		/* Adding LoM-CMS Features to SimpleAuth database */
+		
+		/* No SimpleAuth Part */
 	
 		if(!$db->query("SELECT * FROM lomcms_blog LIMIT 0")){
 			
@@ -153,6 +154,7 @@ if($db_check){
 		
 			$sql_generate_tickets_q = "CREATE TABLE IF NOT EXISTS lomcms_tickets_q(
 					id					INT(11) NOT NULL AUTO_INCREMENT,
+					cat_id				INT(8) NOT NULL,
 					topic				VARCHAR(16) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
 					discussion			VARCHAR(16) NOT NULL,
