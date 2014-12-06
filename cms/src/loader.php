@@ -16,10 +16,26 @@
 ****************************************************
 */
 
-/* APIs */
+require_once("/src/lomcms.php");
+require_once("/src/api.php");
 
-function hashME($username, $password) {
-	return bin2hex(hash("sha512", $password . strtolower($username), true) ^ hash("whirlpool", strtolower($username) . $password, true));
+session_start();
+session_regenerate_id(true);
+ini_set('session.hash_function', 'whirlpool');
+ini_set('session.cookie_secure',1);
+ini_set('session.cookie_httponly',1);
+ini_set('session.use_only_cookies',1);
+set_time_limit(10);
+
+if (isset($_SESSION['HTTP_USER_AGENT']) && $_SESSION['HTTP_USER_AGENT'] != md5($_SERVER['HTTP_USER_AGENT'])){
+	session_destroy();
+	header("refresh: 0;");
+	exit;
+}else{
+	$_SESSION['HTTP_USER_AGENT'] = md5($_SERVER['HTTP_USER_AGENT']);
 }
+
+
+
 
 ?>

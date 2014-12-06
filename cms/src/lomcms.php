@@ -21,4 +21,7 @@ require_once(dirname(dirname(__FILE__)) . "/resource/config.php");
 $db = new \mysqli(MYSQL_HOST, MYSQL_USER, MYSQL_PASS, SIMPLEAUTH_DB, MYSQL_PORT);
 $db_check = @fsockopen(MYSQL_HOST, MYSQL_PORT, $errno, $errstr, 5);
 
+/* Constants */
+//define(' ?? ', ' ?? ');
+
 ?>

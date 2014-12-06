@@ -26,16 +26,43 @@
 //===========================
 //----------------------------
 /* <--	Website Fields --> */
+//----------------------------
+/* <! --- Start Here --- !> */
 /* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
-//Note: This is only temporary. You can apply these settings
+//Note: This is only temporary. You can change these settings
 //		after you have installed this CMS in the Admin Panel.
+//		Once you have installed, LoM-CMS, all settings in here
+//		is saved into the database. Hence, making changes in
+//		here wouldn't take any effect.
 /* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
 define('TEMP_TITLE', 'LoM-CMS MCPE Website');
 define('TEMP_SLOGAN', 'A compact CMS suitable for MCPE servers.');
+//----------------------------
+/* <--	SitePanel Admin --> */
+//----------------------------
+/*		UserName	*/
+define('TEMP_ADM_USER','admin');
+/*		Password	*/
+define('TEMP_ADM_PASS','123');
+/* <--	SitePanel Admin --> */
+//----------------------------
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+//Note: This is only temporary. You can change these settings
+//		after you have installed this CMS in the Admin Panel.
+//		Once you have installed, LoM-CMS, all settings in here
+//		is saved into the database. Hence, making changes in
+//		here wouldn't take any effect.
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+/* <! --- End Here --- !> */
+//===========================
 /* <--	Website Fields --> */
 //----------------------------
 //===========================
 //----------------------------
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
+//Note: Please DO NOT make any changes below ONCE the CMS has
+//		been installed unless you know what you are doing.
+/* --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- */
 /* <--	MySQL Details --> */
 /*		HostName	*/
 define('MYSQL_HOST','localhost');
@@ -50,16 +77,7 @@ define('SIMPLEAUTH_DB','testing');
 /* <--	MySQL Details --> */
 //----------------------------
 //===========================
-//----------------------------
-/* <--	SitePanel Admin --> */
-//----------------------------
-/*		UserName	*/
-define('ADM_USER','admin');
-/*		Password	*/
-define('ADM_PASS','123');
-/* <--	SitePanel Admin --> */
-//----------------------------
-//===========================
 //<--- EDITABLE FIELDS --->//
 //===========================
+
 ?>

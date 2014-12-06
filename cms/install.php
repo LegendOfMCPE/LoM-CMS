@@ -18,6 +18,7 @@
 error_reporting(0);
 
 require_once(dirname(__FILE__) . "/src/lomcms.php");
+require_once(dirname(__FILE__) . "/src/api.php");
 
 echo "<title>LoM-CMS Installation</title>";
 
@@ -161,6 +162,7 @@ if($db_check){
 					cat_id				INT(8) NOT NULL,
 					topic				VARCHAR(80) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
+					ip					VARCHAR(11) NOT NULL,
 					discussion			VARCHAR(5000) NOT NULL,
 					lastposted			INT(11) NOT NULL,
 					lastupdate			INT(11) NOT NULL,
@@ -187,6 +189,7 @@ if($db_check){
 			$sql_generate_tickets_a = "CREATE TABLE IF NOT EXISTS lomcms_tickets_a(
 					id					INT(11) NOT NULL,
 					author				VARCHAR(16) NOT NULL,
+					ip					VARCHAR(11) NOT NULL,
 					discussion			VARCHAR(5000) NOT NULL,
 					lastposted			INT(11) NOT NULL,
 					lastupdate			INT(11) NOT NULL
@@ -211,6 +214,7 @@ if($db_check){
 			$sql_generate_report = "CREATE TABLE IF NOT EXISTS lomcms_report(
 					id					INT(11) NOT NULL AUTO_INCREMENT,
 					author				VARCHAR(16) NOT NULL,
+					ip					VARCHAR(11) NOT NULL,
 					target				VARCHAR(16) NOT NULL,
 					reason				VARCHAR(50) NOT NULL,
 					discussion			VARCHAR(1000) NOT NULL,
@@ -235,23 +239,52 @@ if($db_check){
 		
 		if(!$db->query("SELECT * FROM lomcms_user_status LIMIT 0")){
 		
-			$sql_generate_report = "CREATE TABLE IF NOT EXISTS lomcms_user_status(
+			$sql_generate_user_status = "CREATE TABLE IF NOT EXISTS lomcms_user_status(
 					name				VARCHAR(16) NOT NULL,
 					isbanned			INT(1) NOT NULL DEFAULT '0',
-					ip					INT(11) NOT NULL,
+					ip					VARCHAR(11) NOT NULL,
 					lastupdate			INT(11) NOT NULL
 					)ENGINE=INNODB;";
 			
-			$db->query($sql_generate_report);
+			$db->query($sql_generate_user_status);
 			
 			echo "&gt; [PENDING] lomcms_user_status database not found.<br />";
 			echo "&gt; [PENDING] Generating table ...<br />";
 			
-			if(!$db->query($sql_generate_report)){
+			if(!$db->query($sql_generate_user_status)){
 				echo "&gt; [FAILED] Can't create the table : \"lomcms_user_status\"!<br />";
 				echo "&gt; Aborting ...<br />";
 			}else{
 				echo "&gt; [SUCCESS] Successfully created \"<strong>lomcms_user_status</strong>\" table on \"<strong>" . SIMPLEAUTH_DB . "</strong>\" database! <br />";
+			}
+			
+		}
+		
+		if(!$db->query("SELECT * FROM lomcms_staff LIMIT 0")){
+		
+			$sql_generate_staff = "CREATE TABLE IF NOT EXISTS lomcms_staff(
+					username			VARCHAR(16) NOT NULL,
+					password			CHAR(128) NOT NULL,
+					position			INT(1) NOT NULL DEFAULT '0',
+					lastip				VARCHAR(11) NOT NULL,
+					lastlogin			INT(11) NOT NULL
+					)ENGINE=INNODB;";
+			
+			$db->query($sql_generate_staff);
+			
+			echo "&gt; [PENDING] lomcms_staff database not found.<br />";
+			echo "&gt; [PENDING] Generating table ...<br />";
+			
+			if(!$db->query($sql_generate_staff)){
+				echo "&gt; [FAILED] Can't create the table : \"lomcms_staff\"!<br />";
+				echo "&gt; Aborting ...<br />";
+			}else{
+				$time = intval(time());
+				$clean_usr = strtolower(TEMP_ADM_USER);
+				$hashed_password = hashME($clean_usr, TEMP_ADM_PASS);
+				$submit_temp = "INSERT INTO `lomcms_staff` (`username`, `password`, `position`, `lastip`, `lastlogin`) VALUES ('$clean_usr', '$hashed_password', '2', '0.0.0.0', '$time');";
+				$db->query($submit_temp);
+				echo "&gt; [SUCCESS] Successfully created \"<strong>lomcms_staff</strong>\" table on \"<strong>" . SIMPLEAUTH_DB . "</strong>\" database! <br />";
 			}
 			
 		}
@@ -279,8 +312,6 @@ if($db_check){
 			}else{
 				echo "&gt; [SUCCESS] Successfully created \"<strong>lomcms_srv_mngr</strong>\" table on \"<strong>" . SIMPLEAUTH_DB . "</strong>\" database! <br />";
 			}
-		
-			//echo "&gt; LoM-CMS is now installed and connected to the database! Please delete the <strong>install.php</strong> afterwards.<br />";
 			
 		}else{
 			echo "&gt; LoM-CMS is already installed and connected to the database! Please delete the <strong>install.php</strong> afterwards.<br />";
