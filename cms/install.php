@@ -74,7 +74,7 @@ if($db_check){
 		if($exist_display_name == 0){
 			echo "&gt; [PENDING] 'displayname' column not found on simpleauth_players table.<br />";
 			echo "&gt; [PENDING] Generating column ...<br />";
-			$edn_result = $db->query("ALTER TABLE simpleauth_players ADD displayname VARCHAR(16)");
+			$edn_result = $db->query("ALTER TABLE simpleauth_players ADD displayname VARCHAR(16) NOT NULL");
 			if(!$edn_result){
 				echo "&gt; [FAILED] Can't create column : \"displayname\" on simpleauth_players table!<br />";
 				echo "&gt; Aborting ...<br />";
@@ -89,7 +89,7 @@ if($db_check){
 		if($exist_email == 0){
 			echo "&gt; [PENDING] 'email' column not found on simpleauth_players table.<br />";
 			echo "&gt; [PENDING] Generating column ...<br />";
-			$ee_result = $db->query("ALTER TABLE simpleauth_players ADD email VARCHAR(50)");
+			$ee_result = $db->query("ALTER TABLE simpleauth_players ADD email VARCHAR(50) NOT NULL");
 			if(!$ee_result){
 				echo "&gt; [FAILED] Can't create column : \"email\" on simpleauth_players table!<br />";
 				echo "&gt; Aborting ...<br />";
